@@ -52,7 +52,8 @@ def load_data(image_dir, burst_size):
 
 model = BIPNet()
 model.cuda()
-model.summarize()
+for name, param in model.named_parameters():
+    print(f"Layer: {name}, Size: {param.size()}")
 
 if not os.path.exists(args.model_dir):
     os.makedirs(args.model_dir, exist_ok=True) 
